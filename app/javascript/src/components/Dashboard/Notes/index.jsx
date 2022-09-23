@@ -18,8 +18,17 @@ const Notes = () => {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNoteIds, setSelectedNoteIds] = useState([]);
+  const [selectedNoteId, setSelectedNoteId] = useState(null);
   const [notes, setNotes] = useState([]);
+
+  const onDelete = selectedId => {
+    setShowDeleteAlert(true);
+    setSelectedNoteId(selectedId);
+  };
+  const afterDelete = () => {
+    setShowDeleteAlert(false);
+    setSelectedNoteId(null);
+  };
 
   useEffect(() => {
     fetchNotes();
@@ -63,7 +72,9 @@ const Notes = () => {
           }}
         />
         {notes.length > 0 ? (
-          notes.map(note => <NoteDetail {...note} key={note.id} />)
+          notes.map(note => (
+            <NoteDetail {...note} key={note.id} onDelete={onDelete} />
+          ))
         ) : (
           <EmptyState
             image={EmptyNotesListImage}
@@ -81,9 +92,8 @@ const Notes = () => {
         {showDeleteAlert && (
           <DeleteAlert
             refetch={fetchNotes}
-            selectedNoteIds={selectedNoteIds}
-            setSelectedNoteIds={setSelectedNoteIds}
-            onClose={() => setShowDeleteAlert(false)}
+            selectedNoteId={selectedNoteId}
+            onClose={afterDelete}
           />
         )}
       </Container>
