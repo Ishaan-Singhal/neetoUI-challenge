@@ -15,7 +15,7 @@ const Menu = ({ showMenu }) => {
         <MenuBar.Block
           active={noteCategory.active}
           count={noteCategory.count}
-          key={noteCategory.key}
+          key={noteCategory.id}
           label={noteCategory.label}
         />
       ))}
@@ -44,7 +44,7 @@ const Menu = ({ showMenu }) => {
       {NOTES_MENU_BAR_VALUES.segments.map(segment => (
         <MenuBar.Block
           count={segment.count}
-          key={segment.key}
+          key={segment.id}
           label={segment.label}
         />
       ))}
@@ -71,7 +71,7 @@ const Menu = ({ showMenu }) => {
         </Typography>
       </MenuBar.SubTitle>
       {NOTES_MENU_BAR_VALUES.tags.map(tag => (
-        <MenuBar.Block count={tag.count} key={tag.key} label={tag.label} />
+        <MenuBar.Block count={tag.count} key={tag.id} label={tag.label} />
       ))}
     </MenuBar>
   );

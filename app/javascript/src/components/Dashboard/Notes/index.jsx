@@ -48,7 +48,7 @@ const Notes = () => {
       <Menu showMenu={showMenu} />
       <Container>
         <Header
-          menuBarToggle={() => setShowMenu(!showMenu)}
+          menuBarToggle={() => setShowMenu(showMenu => !showMenu)}
           title="All Notes"
           actionBlock={
             <Button

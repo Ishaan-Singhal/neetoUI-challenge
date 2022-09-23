@@ -19,7 +19,7 @@ const NoteDetail = ({ title, description, created_at: createdAt }) => (
       </Dropdown>
     </div>
     <Typography style="body2">{description}</Typography>
-    <div className="h-0 border-b border-solid border-gray-300" />
+    <hr className="border-gray-300" />
     <div className="mt-2 flex justify-between">
       <div className="flex-initial">
         <Tag label="Getting Started" style="secondary" type="solid" />
