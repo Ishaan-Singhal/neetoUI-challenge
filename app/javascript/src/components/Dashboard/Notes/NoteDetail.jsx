@@ -5,7 +5,13 @@ import { Typography, Avatar, Tooltip, Dropdown, Tag } from "neetoui";
 
 import { calculateTimeDifference, dayTimeFormatter } from "utils/date";
 
-const NoteDetail = ({ title, description, created_at: createdAt }) => (
+const NoteDetail = ({
+  id,
+  title,
+  description,
+  created_at: createdAt,
+  onDelete,
+}) => (
   <div className="my-2 flex w-full flex-col rounded-sm border border-solid border-gray-300 p-4 shadow">
     <div className="flex justify-between">
       <Typography style="h4" weight="semibold">
@@ -14,7 +20,7 @@ const NoteDetail = ({ title, description, created_at: createdAt }) => (
       <Dropdown buttonStyle="text" icon={MenuVertical}>
         <div className="p-1.5">
           <li>Edit</li>
-          <li>Delete</li>
+          <li onClick={() => onDelete(id)}>Delete</li>
         </div>
       </Dropdown>
     </div>
