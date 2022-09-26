@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { RightArrow, LeftArrow } from "neetoicons";
 import { Sidebar as NeetoUISidebar } from "neetoui/layouts";
 import { useHistory } from "react-router-dom";
 
@@ -20,6 +21,16 @@ const Sidebar = () => {
   const authDispatch = useAuthDispatch();
   const { user } = useUserState();
 
+  const renderToggleButton = () => {
+    const Icon = isSidebarCollapsed ? RightArrow : LeftArrow;
+    return (
+      <Icon
+        onClick={() =>
+          setIsSidebarCollapsed(isSidebarCollapsed => !isSidebarCollapsed)
+        }
+      />
+    );
+  };
   const handleLogout = async () => {
     try {
       await authenticationApi.logout();
@@ -51,6 +62,13 @@ const Sidebar = () => {
       changelogProps={{ id: "neetochangelog-trigger" }}
       isCollapsed={isSidebarCollapsed}
       navLinks={SIDENAV_LINKS}
+      footerLinks={[
+        {
+          icon: renderToggleButton,
+          label: " ",
+          to: "",
+        },
+      ]}
       organizationInfo={{
         name: "Wheel",
         subdomain: "bigbinary.com",
@@ -61,7 +79,9 @@ const Sidebar = () => {
         email: user.email,
         bottomLinks,
       }}
-      onCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+      onCollapse={() =>
+        setIsSidebarCollapsed(isSidebarCollapsed => !isSidebarCollapsed)
+      }
     />
   );
 };
