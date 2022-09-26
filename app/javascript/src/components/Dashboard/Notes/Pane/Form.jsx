@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 
 import { Formik, Form } from "formik";
+import { Check } from "neetoicons";
 import { Button, Pane } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Input, Textarea, Select } from "neetoui/formik";
 
 import notesApi from "apis/notes";
 
-import { NOTES_FORM_VALIDATION_SCHEMA } from "../constants";
+import {
+  NOTES_FORM_VALIDATION_SCHEMA,
+  CONTACTS_VALUES,
+  TAGS_VALUES,
+} from "../constants";
 
 const NoteForm = ({ onClose, refetch, note, isEdit }) => {
   const [submitted, setSubmitted] = useState(false);
@@ -18,6 +23,7 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
       } else {
         await notesApi.create(values);
       }
+      logger.info(values);
       refetch();
       onClose();
     } catch (err) {
@@ -49,11 +55,37 @@ const NoteForm = ({ onClose, refetch, note, isEdit }) => {
               name="description"
               rows={8}
             />
+            <Select
+              isSearchable
+              required
+              className="w-full flex-grow-0"
+              label="Assigned Contact"
+              name="assignedContact"
+              placeholder="Select Contact"
+              options={CONTACTS_VALUES.map(({ id, firstName }) => ({
+                value: id,
+                label: firstName,
+              }))}
+            />
+            <Select
+              isMulti
+              isSearchable
+              required
+              className="w-full flex-grow-0"
+              label="Tags"
+              name="tags"
+              placeholder="Select Tags"
+              options={TAGS_VALUES.map(({ name, id }) => ({
+                label: name,
+                value: id,
+              }))}
+            />
           </Pane.Body>
           <Pane.Footer>
             <Button
               className="mr-3"
               disabled={isSubmitting}
+              icon={Check}
               label={isEdit ? "Update" : "Save Changes"}
               loading={isSubmitting}
               size="large"
