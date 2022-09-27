@@ -5,7 +5,7 @@ import { Table as NeetoUITable, Avatar, Typography, Dropdown } from "neetoui";
 
 import { monthDateFormatter } from "utils/date";
 
-const Table = ({ contacts = [] }) => (
+const Table = ({ contacts = [], onDelete }) => (
   <div className="notes-table-height w-full">
     <NeetoUITable
       allowRowClick
@@ -53,7 +53,7 @@ const Table = ({ contacts = [] }) => (
             <Dropdown buttonStyle="text" icon={MenuHorizontal}>
               <div className="p-1.5">
                 <li>Edit</li>
-                <li>Delete</li>
+                <li onClick={onDelete}>Delete</li>
               </div>
             </Dropdown>
           ),
