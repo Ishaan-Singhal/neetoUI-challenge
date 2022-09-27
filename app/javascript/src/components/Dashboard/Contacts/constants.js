@@ -1,5 +1,3 @@
-//import * as yup from "yup"
-
 export const CONTACT_MENU_BAR_VALUES = {
   contacts: [
     {
@@ -23,6 +21,53 @@ export const CONTACT_MENU_BAR_VALUES = {
       label: "Phase 2",
     },
   ],
-  segments: [],
-  tags: [],
+  segments: [
+    {
+      id: 4,
+      count: 0,
+      label: "Segment 1",
+    },
+  ],
+  tags: [
+    {
+      id: 5,
+      count: 0,
+      label: "Tag 1",
+    },
+  ],
 };
+
+export const CONTACTS_VALUES = [
+  {
+    id: 0,
+    firstName: "Alpha",
+    lastName: "Richards",
+    email: "alpha@email.com",
+    createdAt: "2018-04-13 19:18",
+    role: "owner",
+  },
+  {
+    id: 1,
+    firstName: "Beta",
+    lastName: "Jones",
+    email: "beta@email.com",
+    createdAt: "2018-04-13 19:18",
+    role: "owner",
+  },
+  {
+    id: 2,
+    firstName: "Gamma",
+    lastName: "Richards",
+    email: "gamma@email.com",
+    createdAt: "2018-04-13 19:18",
+    role: "owner",
+  },
+  {
+    id: 3,
+    firstName: "Theta",
+    lastName: "Jones",
+    email: "theta@email.com",
+    createdAt: "2018-04-13 19:18",
+    role: "owner",
+  },
+];

@@ -10,13 +10,13 @@ const Menu = ({ showMenu }) => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
 
   return (
-    <MenuBar showMenu={showMenu} title="Notes">
-      {CONTACT_MENU_BAR_VALUES.notes.map(noteCategory => (
+    <MenuBar showMenu={showMenu} title="Contacts">
+      {CONTACT_MENU_BAR_VALUES.contacts.map(contactCategory => (
         <MenuBar.Block
-          active={noteCategory.active}
-          count={noteCategory.count}
-          key={noteCategory.id}
-          label={noteCategory.label}
+          active={contactCategory.active}
+          count={contactCategory.count}
+          key={contactCategory.id}
+          label={contactCategory.label}
         />
       ))}
       <MenuBar.SubTitle
