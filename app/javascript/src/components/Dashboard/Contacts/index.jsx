@@ -7,6 +7,7 @@ import { Container, Header } from "neetoui/layouts";
 import EmptyState from "components/Common/EmptyState";
 
 import ContactMenu from "./ContactMenu";
+import DeleteAlert from "./DeleteAlert";
 import Table from "./Table";
 
 import { CONTACTS_VALUES } from "../Notes/constants";
@@ -14,6 +15,14 @@ import { CONTACTS_VALUES } from "../Notes/constants";
 const Contacts = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+
+  const onDelete = () => {
+    setShowDeleteAlert(true);
+  };
+  const afterDelete = () => {
+    setShowDeleteAlert(false);
+  };
   return (
     <>
       <ContactMenu showMenu={showMenu} />
@@ -34,7 +43,7 @@ const Contacts = () => {
           }}
         />
         {CONTACTS_VALUES.length > 0 ? (
-          <Table contacts={CONTACTS_VALUES} />
+          <Table contacts={CONTACTS_VALUES} onDelete={onDelete} />
         ) : (
           <EmptyState
             image={EmptyNotesListImage}
@@ -44,6 +53,7 @@ const Contacts = () => {
             title="Looks like you don't have any contacts!"
           />
         )}
+        {showDeleteAlert && <DeleteAlert onClose={afterDelete} />}
       </Container>
     </>
   );
