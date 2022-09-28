@@ -5,6 +5,8 @@ import { Typography, Avatar, Tooltip, Dropdown, Tag } from "neetoui";
 
 import { calculateTimeDifference, dayTimeFormatter } from "utils/date";
 
+const { Menu, MenuItem } = Dropdown;
+
 const Card = ({ id, title, description, created_at: createdAt, onDelete }) => (
   <div className="my-2 flex w-full flex-col rounded-sm border border-solid border-gray-300 p-4 shadow">
     <div className="flex justify-between">
@@ -12,10 +14,12 @@ const Card = ({ id, title, description, created_at: createdAt, onDelete }) => (
         {title}
       </Typography>
       <Dropdown buttonStyle="text" icon={MenuVertical}>
-        <div className="p-1.5">
-          <li>Edit</li>
-          <li onClick={() => onDelete(id)}>Delete</li>
-        </div>
+        <Menu>
+          <MenuItem.Button>Edit</MenuItem.Button>
+          <MenuItem.Button style="danger" onClick={() => onDelete(id)}>
+            Delete
+          </MenuItem.Button>
+        </Menu>
       </Dropdown>
     </div>
     <Typography style="body2">{description}</Typography>

@@ -3,6 +3,8 @@ import React from "react";
 import { MenuHorizontal } from "neetoicons";
 import { Avatar, Typography, Dropdown } from "neetoui";
 
+const { Menu, MenuItem } = Dropdown;
+
 export const renderAvatarWithNameAndRole = (firstName, { lastName, role }) => (
   <div className="flex space-x-2">
     <Avatar size="large" user={{ name: `${firstName} ${lastName}` }} />
@@ -17,7 +19,11 @@ export const renderAvatarWithNameAndRole = (firstName, { lastName, role }) => (
 
 export const renderActionDropdown = onDelete => (
   <Dropdown buttonStyle="text" icon={MenuHorizontal}>
-    <li>Edit</li>
-    <li onClick={onDelete}>Delete</li>
+    <Menu>
+      <MenuItem.Button>Edit</MenuItem.Button>
+      <MenuItem.Button style="danger" onClick={onDelete}>
+        Delete
+      </MenuItem.Button>
+    </Menu>
   </Dropdown>
 );
