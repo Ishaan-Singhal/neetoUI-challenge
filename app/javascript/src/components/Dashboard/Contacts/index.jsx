@@ -7,9 +7,9 @@ import { Container, Header } from "neetoui/layouts";
 import EmptyState from "components/Common/EmptyState";
 
 import { CONTACTS_VALUES } from "./constants";
-import ContactMenu from "./ContactMenu";
 import DeleteAlert from "./DeleteAlert";
-import NewContactPane from "./Pane/NewContactPane";
+import Menu from "./Menu";
+import NewPane from "./Pane/Create";
 import Table from "./Table";
 
 const Contacts = () => {
@@ -26,7 +26,7 @@ const Contacts = () => {
   };
   return (
     <>
-      <ContactMenu showMenu={showMenu} />
+      <Menu showMenu={showMenu} />
       <Container>
         <Header
           menuBarToggle={() => setShowMenu(showMenu => !showMenu)}
@@ -54,7 +54,7 @@ const Contacts = () => {
             title="Looks like you don't have any contacts!"
           />
         )}
-        <NewContactPane
+        <NewPane
           setShowPane={setShowNewContactPane}
           showPane={showNewContactPane}
         />

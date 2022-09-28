@@ -5,13 +5,7 @@ import { Typography, Avatar, Tooltip, Dropdown, Tag } from "neetoui";
 
 import { calculateTimeDifference, dayTimeFormatter } from "utils/date";
 
-const NoteDetail = ({
-  id,
-  title,
-  description,
-  created_at: createdAt,
-  onDelete,
-}) => (
+const Card = ({ id, title, description, created_at: createdAt, onDelete }) => (
   <div className="my-2 flex w-full flex-col rounded-sm border border-solid border-gray-300 p-4 shadow">
     <div className="flex justify-between">
       <Typography style="h4" weight="semibold">
@@ -45,4 +39,4 @@ const NoteDetail = ({
   </div>
 );
 
-export default NoteDetail;
+export default Card;
