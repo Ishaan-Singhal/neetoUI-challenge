@@ -20,7 +20,7 @@ export const renderAvatarWithNameAndRole = (firstName, { lastName, role }) => (
 export const renderActionDropdown = onDelete => (
   <Dropdown buttonStyle="text" icon={MenuHorizontal}>
     <Menu>
-      <MenuItem.Button>Edit</MenuItem.Button>
+      <MenuItem.Button> Edit </MenuItem.Button>
       <MenuItem.Button style="danger" onClick={onDelete}>
         Delete
       </MenuItem.Button>
