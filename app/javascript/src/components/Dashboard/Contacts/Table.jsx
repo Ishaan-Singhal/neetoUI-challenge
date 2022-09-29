@@ -1,9 +1,10 @@
 import React from "react";
 
-import { MenuHorizontal } from "neetoicons";
-import { Table as NeetoUITable, Avatar, Typography, Dropdown } from "neetoui";
+import { Table as NeetoUITable } from "neetoui";
 
 import { monthDateFormatter } from "utils/date";
+
+import { renderAvatarWithNameAndRole, renderActionDropdown } from "./utils";
 
 const Table = ({ contacts = [], onDelete }) => (
   <div className="notes-table-height w-full">
@@ -16,20 +17,7 @@ const Table = ({ contacts = [], onDelete }) => (
           dataIndex: "firstName",
           key: "name",
           width: "30%",
-          render: (firstName, { lastName, role }) => (
-            <div className="flex space-x-2">
-              <Avatar
-                size="large"
-                user={{ name: `${firstName} ${lastName}` }}
-              />
-              <div className="flex flex-col">
-                <Typography style="h4">
-                  {firstName} {lastName}
-                </Typography>
-                <Typography style="body3">{role}</Typography>
-              </div>
-            </div>
-          ),
+          render: renderAvatarWithNameAndRole,
         },
         {
           title: "Email",
@@ -49,18 +37,10 @@ const Table = ({ contacts = [], onDelete }) => (
           dataIndex: "id",
           key: "id",
           width: "10%",
-          render: () => (
-            <Dropdown buttonStyle="text" icon={MenuHorizontal}>
-              <div className="p-1.5">
-                <li>Edit</li>
-                <li onClick={onDelete}>Delete</li>
-              </div>
-            </Dropdown>
-          ),
+          render: () => renderActionDropdown(onDelete),
         },
       ]}
     />
   </div>
 );
-
 export default Table;

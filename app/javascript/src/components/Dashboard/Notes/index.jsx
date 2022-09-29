@@ -7,10 +7,10 @@ import { Container, Header } from "neetoui/layouts";
 import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
 
+import Card from "./Card";
 import DeleteAlert from "./DeleteAlert";
 import Menu from "./Menu";
-import NoteDetail from "./NoteDetail";
-import NewNotePane from "./Pane/Create";
+import NewPane from "./Pane/Create";
 
 const Notes = () => {
   const [loading, setLoading] = useState(true);
@@ -73,7 +73,7 @@ const Notes = () => {
         />
         {notes.length > 0 ? (
           notes.map(note => (
-            <NoteDetail {...note} key={note.id} onDelete={onDelete} />
+            <Card {...note} key={note.id} onDelete={onDelete} />
           ))
         ) : (
           <EmptyState
@@ -84,7 +84,7 @@ const Notes = () => {
             title="Looks like you don't have any notes!"
           />
         )}
-        <NewNotePane
+        <NewPane
           fetchNotes={fetchNotes}
           setShowPane={setShowNewNotePane}
           showPane={showNewNotePane}
