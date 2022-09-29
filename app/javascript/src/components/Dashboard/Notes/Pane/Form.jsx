@@ -47,12 +47,14 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               className="w-full flex-grow-0"
               label="Title"
               name="title"
+              placeholder="Enter Title"
             />
             <Textarea
               required
               className="w-full flex-grow-0"
               label="Description"
               name="description"
+              placeholder="Enter Description"
               rows={8}
             />
             <Select
